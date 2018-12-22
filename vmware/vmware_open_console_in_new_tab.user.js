@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name       vmware open console in new tab
 // @namespace  http://agartner.com
-// @version    0.2
+// @version    0.3
 // @description  opens vmrc console in new tab rather than window. also forces html5 console if html5 = true. forces external if externalConsle = true
 // @match      https://vcloud.ialab.us/cloud/org/*
-// @copyright  2014-2017, Alex Gartner
+// @match      https://vcloud.ialab.dsu.edu/cloud/org/*
+// @copyright  2014-2018, Alex Gartner
 // ==/UserScript==
 
 unsafeWindow.openPopoutConsole = function(vmName, vmId, vAppName, vmDevicesAvailable, buttonLabels, miscLabels, confirmationLabels, isVmrc) {
@@ -20,7 +21,7 @@ unsafeWindow.openPopoutConsole = function(vmName, vmId, vAppName, vmDevicesAvail
             if (windowHandles[vmId] != null && !windowHandles[vmId].closed)
             {
                 data = {"type": "ticket-acquired", "ticket": ticket};
-                windowHandles[vmId].postMessage(data, "https://vcenter.dsunix.net");
+                windowHandles[vmId].postMessage(data, "https://agartner.com");
             }
             else {
                 var url = "https://agartner.com/mks/?host=" + host + "&port=" + port + "&name=" + btoa(idNameMap[vmId]) + "&id=" + btoa(vmId) + "&vmx=" + btoa(vmx) + "&ticket=" + btoa(ticket);
